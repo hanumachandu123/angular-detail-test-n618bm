@@ -1,0 +1,47 @@
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Product Details</a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+<form [formGroup]="productDetailForm">
+  <div class="row">
+    <div class="col form-group">
+      <label for="id">ID</label>
+      <input type="text" id="id" class="form-control" formControlName="id" readonly>
+    </div>
+    <div class="col form-group">
+      <label for="id">Name</label>
+      <input type="text" id="id" class="form-control" formControlName="name"  readonly>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col form-group">
+      <label for="id">Type</label>
+      <input type="text" id="id" class="form-control" formControlName="type" readonly>
+    </div>
+    <div class="col form-group">
+      <label for="id">Price</label>
+      <input type="text" id="id" class="form-control" formControlName="price"  readonly>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col form-group">
+      <label for="id">Units</label>
+      <input type="text" id="id" class="form-control" formControlName="units"  readonly>
+    </div>
+    <div class="col form-group">
+      <label for="id">Manufacturing</label>
+      <input type="text" id="id" class="form-control" formControlName="manufacturing" readonly>
+    </div>
+  </div>
+  <div class="form-group mt-4">
+    <button class="btn btn-primary" (click)="navigateToDashboard()">Back</button>
+  </div>
+ 
+</form>
+  </div>
+</body>

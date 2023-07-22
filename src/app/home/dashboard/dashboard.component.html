@@ -1,0 +1,68 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Dashboard</a>
+    </div>
+    <p-toggleButton [(ngModel)]="nameFrozen" (click)="freezeName(nameFrozen)" [onIcon]="'pi pi-lock'" offIcon="pi pi-lock-open" [onLabel]="'Name'" offLabel="Name"></p-toggleButton>
+  <p-toggleButton [(ngModel)]="groupByType" (click)="groupbyTypeChange(groupByType)" [onIcon]="'pi pi-server'" offIcon="pi pi-server" [onLabel]="'Group By Type'" offLabel="Group By Type"></p-toggleButton>
+  </div>
+</nav>
+<div class="card">
+  <p-table
+    *ngIf="displayProducts"
+    [value]="products"
+    dataKey="id"
+    [scrollable]="true"
+    #dt
+    (filter)="onFilter($event)"
+    [columns]="selectedColumns"
+    [paginator]="true"
+    [rows]="10"
+    [paginatorPosition]="'bottom'"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [sortMode]="'multiple'"
+    [tableStyle]="{ 'min-width': '85rem' }"
+    rowGroupMode="subheader"
+    [groupRowsBy]="groupByTypeName"
+  >
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th
+         class="tableDataColumn"
+          *ngFor="let col of columns"
+          [pSortableColumn]="col.field"
+          pFrozenColumn
+          [frozen]="col.frozen"
+        >
+          {{ col.header }}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+          <p-columnFilter
+            type="text"
+            [field]="col.field"
+            display="menu"
+          ></p-columnFilter>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template *ngIf="groupByTypeName" pTemplate="groupheader" let-product>
+      <tr pRowGroupHeader>
+        <td class="tableDataColumn" colspan="6" pFrozenColumn [frozen]="true">
+          <span class="font-bold ml-2">{{ product.type }}</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-rowData let-columns="columns">
+      <tr (click)="viewProductDetails(rowData)">
+        <td
+         class="tableDataColumn"
+          *ngFor="let col of columns"
+          pFrozenColumn
+          [frozen]="col.frozen"
+          [ngClass]="{ frozen: col.frozen }"
+        >
+          {{ rowData[col.field] }}
+        </td>
+      </tr></ng-template
+    >
+  </p-table>
+</div>

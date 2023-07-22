@@ -1,0 +1,40 @@
+<body>
+  <div class="container">
+    <div class="card">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <input
+          type="text"
+          placeholder="Username (test)"
+          class="form-control"
+          formControlName="username"
+          required
+        />
+        <div *ngIf="isFieldInvalid('username')" class="text-danger mt-1">
+          Username is required.
+        </div>
+        <input
+          type="password"
+          placeholder="Password (test)"
+          class="form-control"
+          formControlName="password"
+          required
+        />
+        <div *ngIf="isFieldInvalid('password')" class="text-danger mt-1">
+          Password is required.
+        </div>
+        <div class="buttons">
+          <button
+            type="submit"
+            class="login-button"
+            [ngClass]="{ 'custom-cursor': loginForm.invalid }"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+

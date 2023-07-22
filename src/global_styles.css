@@ -1,0 +1,12 @@
+/* Add application styles & imports to this file! */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "node_modules/primeicons/primeicons.css";
+@import "node_modules/primeng/resources/themes/saga-blue/theme.css";
+@import "node_modules/primeng/resources/primeng.min.css";
+
+.navbar{
+  background-color: #f6226f;
+}
+.navbar-header>a{
+  color:#fff;
+}
